@@ -1,0 +1,87 @@
+<?php
+session_start();
+require_once "../config/db.php";
+
+// Ensure user is logged in
+if (!isset($_SESSION["user_id"]) || !isset($_SESSION["email"])) {
+    header("Location: login.php");
+    exit();
+}
+
+$user_id = $_SESSION["user_id"];
+
+// Handle OTP verification
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $entered_otp = trim($_POST["otp"]);
+
+    $sql = "SELECT otp, otp_expiry FROM users WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($stored_otp, $otp_expiry);
+        $stmt->fetch();
+
+        // Check if OTP has expired
+        if (strtotime($otp_expiry) < time()) {
+            $_SESSION["error"] = "OTP has expired. Please request a new OTP.";
+            header("Location: resend_otp.php");
+            exit();
+        }
+
+        // Validate OTP
+        if ($entered_otp == $stored_otp) {
+            // OTP correct, clear OTP from database
+            $clearOTP = "UPDATE users SET otp = NULL, otp_expiry = NULL WHERE id = ?";
+            $clearStmt = $conn->prepare($clearOTP);
+            $clearStmt->bind_param("i", $user_id);
+            $clearStmt->execute();
+
+            $_SESSION["authenticated"] = true; // User is now authenticated
+            header("Location: ../dashboard/index.php");
+            exit();
+        } else {
+            $_SESSION["error"] = "Invalid OTP. Please try again.";
+        }
+    } else {
+        $_SESSION["error"] = "Something went wrong. Try again.";
+    }
+    $stmt->close();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Verify OTP - LoginShield</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center h-screen bg-gray-100">
+    <div class="w-full max-w-md p-6 bg-white shadow-md rounded-lg">
+        <h2 class="text-2xl font-semibold text-center mb-4">Verify OTP</h2>
+
+        <?php if (isset($_SESSION["error"])): ?>
+            <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 mb-4">
+                <?php echo $_SESSION["error"]; unset($_SESSION["error"]); ?>
+            </div>
+        <?php endif; ?>
+
+        <form action="" method="POST" class="space-y-4">
+            <input type="text" name="otp" placeholder="Enter OTP" required 
+                class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">
+                Verify OTP
+            </button>
+        </form>
+
+        <!-- Resend OTP -->
+        <div class="text-center mt-4">
+            <p class="text-gray-600">Didn't receive an OTP?</p>
+            <a href="resend_otp.php" class="text-blue-500 hover:underline">Resend OTP</a>
+        </div>
+    </div>
+</body>
+</html>
