@@ -108,40 +108,67 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Verify OTP</title>
+    <title>Verify OTP - ANONYMOUSWORLDKE</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Glass Morphism Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Dark Mode Styles */
+        .dark { background-color: #0a0a0a; color: #e0e0e0; }
+        .dark .glass { background: rgba(26, 26, 26, 0.8); border: 1px solid rgba(0, 255, 0, 0.3); }
+        .dark .text-gray-700 { color: #e0e0e0; }
+        .dark .bg-blue-500 { background-color: #0f0; color: #000; } /* Neon Green for Buttons */
+        .dark .bg-blue-500:hover { background-color: #0a0; } /* Darker Green on Hover */
+        .dark .bg-gray-500 { background-color: #333; } /* Gray for Resend Button */
+        .dark .bg-gray-500:hover { background-color: #444; } /* Lighter Gray on Hover */
+        .dark .border-gray-300 { border-color: #444; } /* Border Color for Input */
+        .dark .focus\:ring-blue-500:focus { --tw-ring-color: rgba(0, 255, 0, 0.5); } /* Neon Green Focus Ring */
+    </style>
 </head>
-<body class="flex items-center justify-center h-screen bg-gray-100">
-    <div class="w-full max-w-md p-6 bg-white shadow-md rounded-lg">
-        <h2 class="text-2xl font-bold text-center text-gray-700 mb-4">Verify OTP</h2>
+<body class="flex items-center justify-center h-screen bg-gray-100 dark">
+    <!-- Form Container -->
+    <div class="w-full max-w-md p-6 glass rounded-lg">
+        <h2 class="text-2xl font-bold text-center text-gray-700 dark:text-white mb-4">Verify OTP</h2>
 
         <!-- Error Message -->
         <?php if (isset($_SESSION["error"])): ?>
-            <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 mb-4 text-sm">
+            <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-3 mb-4 text-sm dark:bg-red-900 dark:border-red-700 dark:text-red-300">
                 <?php echo $_SESSION["error"]; unset($_SESSION["error"]); ?>
             </div>
         <?php endif; ?>
 
         <!-- Success Message -->
         <?php if (isset($_SESSION["success"])): ?>
-            <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-3 mb-4 text-sm">
+            <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-3 mb-4 text-sm dark:bg-green-900 dark:border-green-700 dark:text-green-300">
                 <?php echo $_SESSION["success"]; unset($_SESSION["success"]); ?>
             </div>
         <?php endif; ?>
 
+        <!-- OTP Verification Form -->
         <form action="" method="POST" class="space-y-4">
             <div>
-                <label class="text-sm text-gray-600">Enter OTP</label>
+                <label class="text-sm text-gray-600 dark:text-gray-300">Enter OTP</label>
                 <input type="text" name="otp" placeholder="Enter your OTP" required 
-                    class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:text-white">
             </div>
 
-            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">Verify OTP</button>
+            <!-- Verify OTP Button -->
+            <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">
+                Verify OTP
+            </button>
         </form>
 
-        <!-- ✅ Resend OTP Button -->
+        <!-- Resend OTP Button -->
         <form action="resend_otp.php" method="POST" class="mt-4">
-            <button type="submit" class="w-full bg-gray-500 text-white py-2 rounded-md hover:bg-gray-600">Resend OTP</button>
+            <button type="submit" class="w-full bg-gray-500 text-white py-2 rounded-md hover:bg-gray-600">
+                Resend OTP
+            </button>
         </form>
     </div>
 </body>

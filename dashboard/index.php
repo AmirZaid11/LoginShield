@@ -33,10 +33,13 @@ $logs_stmt->close();
     <title>Dashboard - ANONYMOUSWORLDKE</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+        // Toggle Dark Mode
         function toggleDarkMode() {
             document.body.classList.toggle("dark");
             localStorage.setItem("darkMode", document.body.classList.contains("dark") ? "enabled" : "disabled");
         }
+
+        // Check for saved dark mode preference
         window.onload = function() {
             if (localStorage.getItem("darkMode") === "enabled") {
                 document.body.classList.add("dark");
@@ -44,12 +47,19 @@ $logs_stmt->close();
         };
     </script>
     <style>
-        .dark { background-color: #1a202c; color: white; }
-        .dark .bg-white { background-color: #2d3748; }
-        .dark .text-gray-700 { color: #cbd5e0; }
+        /* Dark Mode Styles */
+        .dark { background-color:rgb(19, 1, 1); color:rgb(7, 3, 3); }
+        .dark .bg-white { background-color: #1a1a1a; }
+        .dark .text-gray-700 { color:rgb(9, 5, 253); }
+        .dark .bg-blue-600 { background-color: #0f0; color: #000; } /* Neon Green for Sidebar */
+        .dark .bg-blue-500 { background-color: #0a0; } /* Darker Green for Buttons */
+        .dark .bg-red-500 { background-color: #f00; } /* Red for Logout Button */
+        .dark .bg-gray-500 { background-color: #333; } /* Gray for Toggle Button */
+        .dark .bg-green-500 { background-color: #0f0; } /* Neon Green for Progress Bar */
+        .dark .bg-yellow-500 { background-color: #ff0; color: #000; } /* Yellow for Manage Sessions Button */
     </style>
 </head>
-<body class="flex h-screen bg-gray-100 dark">
+<body class="flex h-screen bg-black dark">
 
     <!-- Sidebar -->
     <div class="w-72 bg-blue-600 text-white p-5 space-y-6">
