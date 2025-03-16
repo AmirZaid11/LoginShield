@@ -21,6 +21,7 @@ function sendEmail($recipientEmail, $subject, $body) {
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
 
+        
         // Email Headers
         $mail->setFrom('your_email@gmail.com', 'LoginShield'); // Sender Email
         $mail->addAddress($recipientEmail); // Recipient Email
