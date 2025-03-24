@@ -79,11 +79,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $user_id = $conn->insert_id;
 
                     // Insert security questions
-                    $q_sql = "INSERT INTO security_questions (user_id, question1, answer1, question2, answer2, question3, answer3) 
-                             VALUES (?, ?, ?, ?, ?, ?, ?)";
-                    $q_stmt = $conn->prepare($q_sql);
-                    $q_stmt->bind_param("issssss", $user_id, $q1, $a1, $q2, $a2, $q3, $a3);
-                    $q_stmt->execute();
+                    // Ensure connection is valid
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// SQL query
+$q_sql = "INSERT INTO security_questions (user_id, question1, answer1, question2, answer2, question3, answer3) 
+          VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+// Prepare the statement
+$q_stmt = $conn->prepare($q_sql);
+if ($q_stmt === false) {
+    die("Prepare failed: " . $conn->error);
+}
+
+// Bind parameters and execute
+$q_stmt->bind_param("issssss", $user_id, $q1, $a1, $q2, $a2, $q3, $a3);
+if (!$q_stmt->execute()) {
+    die("Execute failed: " . $q_stmt->error);
+}
+
+// Close the statement
+$q_stmt->close();
 
                     header("Location: login.php");
                     exit();
