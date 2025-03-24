@@ -1,14 +1,9 @@
 {
-    "_readme": [
-        "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "ff52441dbdee6655f6cf51893aabb428",
     "packages": [
         {
             "name": "beberlei/assert",
             "version": "v3.3.3",
+            "version_normalized": "3.3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/beberlei/assert.git",
@@ -36,7 +31,9 @@
             "suggest": {
                 "ext-intl": "Needed to allow Assertion::count(), Assertion::isCountable(), Assertion::minCount(), and Assertion::maxCount() to operate on ResourceBundles"
             },
+            "time": "2024-07-15T13:18:35+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "lib/Assert/functions.php"
@@ -71,11 +68,12 @@
                 "issues": "https://github.com/beberlei/assert/issues",
                 "source": "https://github.com/beberlei/assert/tree/v3.3.3"
             },
-            "time": "2024-07-15T13:18:35+00:00"
+            "install-path": "../beberlei/assert"
         },
         {
             "name": "chillerlan/php-qrcode",
             "version": "5.0.3",
+            "version_normalized": "5.0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/chillerlan/php-qrcode.git",
@@ -108,7 +106,9 @@
                 "setasign/fpdf": "Required to use the QR FPDF output.",
                 "simple-icons/simple-icons": "SVG icons that you can use to embed as logos in the QR Code"
             },
+            "time": "2024-11-21T16:12:34+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "chillerlan\\QRCode\\": "src"
@@ -164,11 +164,12 @@
                     "type": "Ko-Fi"
                 }
             ],
-            "time": "2024-11-21T16:12:34+00:00"
+            "install-path": "../chillerlan/php-qrcode"
         },
         {
             "name": "chillerlan/php-settings-container",
             "version": "2.1.6",
+            "version_normalized": "2.1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/chillerlan/php-settings-container.git",
@@ -191,7 +192,9 @@
                 "phpunit/phpunit": "^9.6",
                 "squizlabs/php_codesniffer": "^3.10"
             },
+            "time": "2024-07-17T01:04:28+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "chillerlan\\Settings\\": "src"
@@ -231,11 +234,12 @@
                     "type": "ko_fi"
                 }
             ],
-            "time": "2024-07-17T01:04:28+00:00"
+            "install-path": "../chillerlan/php-settings-container"
         },
         {
             "name": "paragonie/constant_time_encoding",
             "version": "v2.7.0",
+            "version_normalized": "2.7.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/constant_time_encoding.git",
@@ -254,7 +258,9 @@
                 "phpunit/phpunit": "^6|^7|^8|^9",
                 "vimeo/psalm": "^1|^2|^3|^4"
             },
+            "time": "2024-05-08T12:18:48+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "ParagonIE\\ConstantTime\\": "src/"
@@ -298,11 +304,12 @@
                 "issues": "https://github.com/paragonie/constant_time_encoding/issues",
                 "source": "https://github.com/paragonie/constant_time_encoding"
             },
-            "time": "2024-05-08T12:18:48+00:00"
+            "install-path": "../paragonie/constant_time_encoding"
         },
         {
             "name": "phpgangsta/googleauthenticator",
             "version": "dev-master",
+            "version_normalized": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPGangsta/GoogleAuthenticator.git",
@@ -317,8 +324,10 @@
             "require": {
                 "php": ">=5.3"
             },
+            "time": "2019-03-20T00:55:58+00:00",
             "default-branch": true,
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "PHPGangsta/GoogleAuthenticator.php"
@@ -346,11 +355,12 @@
                 "issues": "https://github.com/PHPGangsta/GoogleAuthenticator/issues",
                 "source": "https://github.com/PHPGangsta/GoogleAuthenticator"
             },
-            "time": "2019-03-20T00:55:58+00:00"
+            "install-path": "../phpgangsta/googleauthenticator"
         },
         {
             "name": "phpmailer/phpmailer",
             "version": "v6.9.3",
+            "version_normalized": "6.9.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
@@ -389,7 +399,9 @@
                 "symfony/polyfill-mbstring": "To support UTF-8 if the Mbstring PHP extension is not enabled (^1.2)",
                 "thenetworg/oauth2-azure": "Needed for Microsoft XOAUTH2 authentication"
             },
+            "time": "2024-11-24T18:04:13+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "PHPMailer\\PHPMailer\\": "src/"
@@ -427,11 +439,12 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-11-24T18:04:13+00:00"
+            "install-path": "../phpmailer/phpmailer"
         },
         {
             "name": "spomky-labs/otphp",
             "version": "v10.0.3",
+            "version_normalized": "10.0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Spomky-Labs/otphp.git",
@@ -460,6 +473,7 @@
                 "phpunit/phpunit": "^8.0",
                 "thecodingmachine/phpstan-safe-rule": "^1.0 || ^2.0"
             },
+            "time": "2022-03-17T08:00:35+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -468,6 +482,7 @@
                     "v10.0": "10.0.x-dev"
                 }
             },
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "OTPHP\\": "src/"
@@ -502,11 +517,12 @@
                 "issues": "https://github.com/Spomky-Labs/otphp/issues",
                 "source": "https://github.com/Spomky-Labs/otphp/tree/v10.0.3"
             },
-            "time": "2022-03-17T08:00:35+00:00"
+            "install-path": "../spomky-labs/otphp"
         },
         {
             "name": "thecodingmachine/safe",
             "version": "v2.5.0",
+            "version_normalized": "2.5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thecodingmachine/safe.git",
@@ -527,12 +543,14 @@
                 "squizlabs/php_codesniffer": "^3.2",
                 "thecodingmachine/phpstan-strict-rules": "^1.0"
             },
+            "time": "2023-04-05T11:54:14+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.2.x-dev"
                 }
             },
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "deprecated/apc.php",
@@ -641,18 +659,9 @@
                 "issues": "https://github.com/thecodingmachine/safe/issues",
                 "source": "https://github.com/thecodingmachine/safe/tree/v2.5.0"
             },
-            "time": "2023-04-05T11:54:14+00:00"
+            "install-path": "../thecodingmachine/safe"
         }
     ],
-    "packages-dev": [],
-    "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": {
-        "phpgangsta/googleauthenticator": 20
-    },
-    "prefer-stable": false,
-    "prefer-lowest": false,
-    "platform": {},
-    "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "dev": true,
+    "dev-package-names": []
 }
